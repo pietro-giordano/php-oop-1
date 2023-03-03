@@ -129,25 +129,22 @@ $django = new Movie('Django Unchained', 2012, 'English', 8.8, ['Drama', 'Western
                               <div class="card">
                                     <div class="card-body">
                                           <h5 class="card-title">
-                                                <?php echo $matrix->getTitle() ?>
+                                                Titolo: <?php echo $matrix->getTitle() ?>
                                           </h5>
-                                          <p><?php echo $matrix->getYear() ?></p>
-                                          <p><?php echo $matrix->getLanguage() ?></p>
-                                          <p><?php echo $matrix->getVote() ?></p>
-                                          <ul class="list-group list-group-flush">
+                                          <p>Anno: <?php echo $matrix->getYear() ?></p>
+                                          <p>Lingua: <?php echo $matrix->getLanguage() ?></p>
+                                          <p>Voto: <?php echo $matrix->getVote() ?></p>
+                                          <ul class="list-group">
+                                                <li class="list-group-item fw-bold">Generi:</li>
+                                                <li class="list-group-item"><?php echo $matrix->getGenre()[0] ?></li>
+                                          </ul>
+                                          <ul class="list-group">
+                                                <li class="list-group-item fw-bold">Regista/i:</li>
+                                                <li class="list-group-item"><?php echo $matrix->getDirector()[0] ?></li>
+                                          </ul>
+                                          <ul class="list-group">
+                                                <li class="list-group-item fw-bold">Cast:</li>
                                                 <li class="list-group-item"><?php echo $matrix->getCast()[0] ?></li>
-                                                <li class="list-group-item">A second item</li>
-                                                <li class="list-group-item">A third item</li>
-                                          </ul>
-                                          <ul class="list-group list-group-flush">
-                                                <li class="list-group-item">An item</li>
-                                                <li class="list-group-item">A second item</li>
-                                                <li class="list-group-item">A third item</li>
-                                          </ul>
-                                          <ul class="list-group list-group-flush">
-                                                <li class="list-group-item">An item</li>
-                                                <li class="list-group-item">A second item</li>
-                                                <li class="list-group-item">A third item</li>
                                           </ul>
                                     </div>
                               </div>
