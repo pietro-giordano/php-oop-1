@@ -99,11 +99,19 @@ class Movie
       }
 }
 
+$movies = [];
+
 $matrix = new Movie('Matrix', 1999, 'English', 8.7, ['action', 'sci-fi'], ['Lana Wachowski', 'Lilly Wachowski'], ['Keanu Reeves', 'Carrie-Ann Moss', 'Laurence Fishburne']);
 // var_dump($matrix);
+$movies[] = $matrix;
 
 $django = new Movie('Django Unchained', 2012, 'English', 8.8, ['Drama', 'Western'], ['Quentin Tarantino'], ['Jamie Fox', 'Leonardo di Caprio', 'Christoph Waltz', 'Samuel L. Jackson']);
 // var_dump($django);
+$movies[] = $django;
+
+$fight = new Movie('Fight Club', 1999, 'English', 8.8, ['Drama'], ['David Fincher'], ['Brad Pitt', 'Edward Norton', 'Helena Bonham Carter']);
+// var_dump($django);
+$movies[] = $fight;
 
 ?>
 
@@ -125,30 +133,48 @@ $django = new Movie('Django Unchained', 2012, 'English', 8.8, ['Drama', 'Western
             <div class="container">
                   <div class="row mt-3">
 
-                        <div class="col-4">
-                              <div class="card">
-                                    <div class="card-body">
-                                          <h5 class="card-title">
-                                                Titolo: <?php echo $matrix->getTitle() ?>
-                                          </h5>
-                                          <p>Anno: <?php echo $matrix->getYear() ?></p>
-                                          <p>Lingua: <?php echo $matrix->getLanguage() ?></p>
-                                          <p>Voto: <?php echo $matrix->getVote() ?></p>
-                                          <ul class="list-group">
-                                                <li class="list-group-item fw-bold">Generi:</li>
-                                                <li class="list-group-item"><?php echo $matrix->getGenre()[0] ?></li>
-                                          </ul>
-                                          <ul class="list-group">
-                                                <li class="list-group-item fw-bold">Regista/i:</li>
-                                                <li class="list-group-item"><?php echo $matrix->getDirector()[0] ?></li>
-                                          </ul>
-                                          <ul class="list-group">
-                                                <li class="list-group-item fw-bold">Cast:</li>
-                                                <li class="list-group-item"><?php echo $matrix->getCast()[0] ?></li>
-                                          </ul>
+                        <?php
+                        foreach ($movies as $movie) {
+                        ?>
+                              <div class="col-4">
+                                    <div class="card">
+                                          <div class="card-body">
+                                                <h5 class="card-title">
+                                                      Titolo: <?php echo $movie->getTitle() ?>
+                                                </h5>
+                                                <p>Anno: <?php echo $movie->getYear() ?></p>
+                                                <p>Lingua: <?php echo $movie->getLanguage() ?></p>
+                                                <p>Voto: <?php echo $movie->getVote() ?></p>
+                                                <ul class="list-group">
+                                                      <li class="list-group-item fw-bold">Generi:</li>
+                                                      <?php
+                                                      foreach ($movie->getGenre() as $genre) {
+                                                            echo '<li class="list-group-item">' . $genre . '</li>';
+                                                      }
+                                                      ?>
+                                                </ul>
+                                                <ul class="list-group">
+                                                      <li class="list-group-item fw-bold">Regista/i:</li>
+                                                      <?php
+                                                      foreach ($movie->getDirector() as $genre) {
+                                                            echo '<li class="list-group-item">' . $genre . '</li>';
+                                                      }
+                                                      ?>
+                                                </ul>
+                                                <ul class="list-group">
+                                                      <li class="list-group-item fw-bold">Cast:</li>
+                                                      <?php
+                                                      foreach ($movie->getCast() as $genre) {
+                                                            echo '<li class="list-group-item">' . $genre . '</li>';
+                                                      }
+                                                      ?>
+                                                </ul>
+                                          </div>
                                     </div>
                               </div>
-                        </div>
+                        <?php
+                        }
+                        ?>
 
                   </div>
             </div>
